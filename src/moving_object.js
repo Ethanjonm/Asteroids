@@ -13,23 +13,35 @@ MovingObject.prototype.draw = function(ctx) {
     ctx.fill();
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const canvasEl = document.getElementById("game-canvas");
-    const ctx = canvasEl.getContext("2d");
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const canvasEl = document.getElementById("game-canvas");
+  const ctx = canvasEl.getContext("2d");
     
-    const ethan = new MovingObject({
-      pos: [100, 100],
-      vel: [0, 0],
-      radius: 50,
-      color: "blue"
-    });
-    
-    ethan.draw(ctx);
+  const ethan = new MovingObject({
+     pos: [100, 100],
+    vel: [1, 1],
+    radius: 50,
+     color: "blue"
   });
 
-  MovingObject.prototype.move = function(){
-    let currentPos = this.pos
-    let this.vel[0]
-  }
-  
+  ethan.draw(ctx);
+      setInterval(() => {
+    ethan.move();
+    ctx.clearRect(0,0, canvasEl.width, canvasEl.height);
+    ethan.draw(ctx)
+  }, 10)
+
+
+});
+
+MovingObject.prototype.move = function(){
+  this.pos[0] += this.vel[0]
+  this.pos[1] += this.vel[1]
+}
+
+
+
+
 export default MovingObject;
